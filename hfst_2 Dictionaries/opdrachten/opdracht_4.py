@@ -8,3 +8,8 @@ laptop_korneel = {
     "supplier": "???",
     "supplier_2": "bol.com"
 }
+# niveau 1
+laptop_korneel["status"] = "deployed"
+
+# niveau 2:
+# Er staan meerdere  waardes in 
