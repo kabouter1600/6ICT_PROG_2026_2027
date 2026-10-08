@@ -15,3 +15,6 @@ landen_feiten = {
         'taal': 'Duits',
     }
 }
+for land_feit, waarde in landen_feiten.items():
+    if "hoofdstad" in landen_feiten[land_feit]:
+        print(f"hooofstad van {land_feit} is {landen_feiten[land_feit]["hoofdstad"]}")
