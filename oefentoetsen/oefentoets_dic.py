@@ -69,18 +69,79 @@ Print de naam van de speler met de hoogste score. Op het moment is dit Jan.
 De code moet correct blijven werken, ook als er in de toekomst iemand anders een hogere score haalt.
 Je kan dit zelf testen door de scores in de datastructuur aan te passen.
 """
-hoogste_score = 0
-index_hoogste_score = 0
-brickbreaker = [
-    {"speler": "Eva", "score": 1500, "level": 5},
-    {"speler": "Jan", "score": 2300, "level": 7},
-    {"speler": "Lotte", "score": 1800, "level": 6},
-    {"speler": "Pieter", "score": 900, "level": 3},
-    {"speler": "Sofie", "score": 2000, "level": 7},
-]
-for index, persoon in enumerate(brickbreaker):
-    if hoogste_score < brickbreaker[index]['score']:
-        hoogste_score = brickbreaker[index]['score']
-        index_hoogste_score = index
-print(f"{brickbreaker[index_hoogste_score]["speler"]} heeft de hoogste score")
-    
+# hoogste_score = 0
+# index_hoogste_score = 0
+# brickbreaker = [
+#     {"speler": "Eva", "score": 1500, "level": 5},
+#     {"speler": "Jan", "score": 2300, "level": 7},
+#     {"speler": "Lotte", "score": 1800, "level": 6},
+#     {"speler": "Pieter", "score": 900, "level": 3},
+#     {"speler": "Sofie", "score": 2000, "level": 7},
+# ]
+# for index, persoon in enumerate(brickbreaker):
+#     if hoogste_score < brickbreaker[index]['score']:
+#         hoogste_score = brickbreaker[index]['score']
+#         index_hoogste_score = index
+# print(f"{brickbreaker[index_hoogste_score]["speler"]} heeft de hoogste score")
+""" OEFENING 3 (  / 5)
+Onderstaande datastructuur is een vereenvoudigde weergave van het asset-management binnen de school.
+
+De sleutel van de hoofd-dictionary is het SPB-nummer van de asset.
+De waarde is een sub-dictionary met erin volgende informatie:
+    - serial         (verplicht, altijd ingevuld)
+    - categorie      (optioneel, kan None zijn als de asset niet in een categorie geplaatst is)
+    - toegewezen_aan (optioneel, komt niet voor als de asset niet toegewezen is)
+
+Maak een overzicht van alle assets die toegewezen zijn aan een bepaalde gebruiker (naam_gebruiker). 
+Voor elk toegewezen asset moet je volgende informatie printen:
+    - SPB-nummer
+    - Serial
+    - Categorie (alleen als deze niet None is)
+Print tenslotte het totaal aantal assets dat aan deze gebruiker is toegewezen.
+
+De code moet correct blijven werken als er in de toekomst meer assets worden toegevoegd of gewijzigd.
+"""
+
+""" VOORBEELD (naam_gebruiker = jan.janssen)
+Overzicht van assets toegewezen aan jan.janssen...
+    - spb2021-098817 met serial 5CD133BZBC en categorie Huur100
+    - spb2021-100101 met serial 5CD133FEED
+Totaal aantal toegewezen assets: 2
+"""
+
+assets = {
+    "spb2021-098817": {
+        "serial": "5CD133BZBC",
+        "categorie": "Huur100",
+        "toegewezen_aan": "jan.janssen"
+    },
+    "spb2023-092814": {
+        "serial": "5CD235BZBC",
+        "categorie": "Overgekocht",
+        "toegewezen_aan": "piet.pieters"
+    },
+    "spb2022-043299": {
+        "serial": "5CD183BADC",
+        "categorie": "Huur100",
+    },
+    "spb2021-100101": {
+        "serial": "5CD133FEED",
+        "categorie": None,
+        "toegewezen_aan": "jan.janssen"
+    },
+}
+
+naam_gebruiker = "jan.janssen"
+teller = 0
+for asset, info in assets.items():
+    for waarde, gegeven in info.items():
+        if gegeven == naam_gebruiker:
+            teller += 1
+            print(asset)
+            toegewezen = asset
+    if toegewezen == asset:
+        if assets[toegewezen]["categorie"] != None:
+            print(f"- {asset} met als serial {assets[toegewezen]["serial"]} en met categorie {assets[toegewezen]["categorie"]}")
+        else:
+            print(f"- {asset} met als serial {assets[toegewezen]["serial"]}")
+print(f"totaal aantal keren toegewezen assets:{teller}")
